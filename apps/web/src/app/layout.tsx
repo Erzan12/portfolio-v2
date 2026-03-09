@@ -1,5 +1,5 @@
 import "./globals.css"
-import Navbar from "@/components/core/navbar"
+import Navbar from "@/components/core/navbar/navbar"
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/core/footer";
@@ -15,7 +15,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
-      {/* <body className="bg-white text-gray-900 dark:text-gray-100 dark:bg-black"> */}
       <body className="bg-white dark:bg-black text-black dark:text-white">
         <ThemeProvider>
           <Navbar />
