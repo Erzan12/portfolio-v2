@@ -1,7 +1,7 @@
 ---
 id: structure
 title: Web Application Structure
-slug: /
+# slug: /Web/structure
 ---
 
 # Portfolio v2 - Web Application Structure

@@ -1,7 +1,7 @@
 ---
 id: overview
 title: Overview
-slug: /
+# slug: /docs/Web/overview
 ---
 
 # Portfolio v2 - Overview
