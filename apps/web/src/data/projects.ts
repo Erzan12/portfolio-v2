@@ -1,17 +1,24 @@
 export const projects = [
-    {
-        title: "Project Inventory System",
-        description: "A fullstack ERP product management based system, currently in development.",
-        stack: ["NestJS", "Prisma", "PostgreSQL", "NextJS"],
-        github: "https://github.com/Erzan12/Product-Inventory-System",
-        featured: "true",
-    },
-    {
-        title: "Portfolio Platform",
-        description:
-        "Monorepo developer platform featuring a Next.js portfolio and Docusaurus engineering documentation.",
-        stack: ["Next.js", "Tailwind", "Docusaurus"],
-        github: "https://github.com/Erzan12/portfolio-v2",
-        featured: true,
-    },
-]
+  {
+    title: "Portfolio",
+    description: "My portfolio website built with React, Next.js, and TailwindCSS",
+    stack: ["React", "NextJS", "TypeScript", "Tailwind"],
+    github: "Erzan12/portfolio-v2",
+    featured: true,
+  },
+  {
+    title: "Product Inventory",
+    description: "Inventory management system with NestJS, Prisma, and PostgreSQL",
+    stack: ["NestJS", "Prisma", "PostgreSQL", "Docker"],
+    github: "Erzan12/Product-Inventory-System",
+    featured: true,
+  },
+  {
+    title: "Docs Platform",
+    description: "Developer documentation platform using Docusaurus",
+    stack: ["Docusaurus", "TypeScript", "React"],
+    github: "Erzan12/docs-platform",
+    featured: false,
+  },
+  // Add more projects as needed
+];

@@ -1,5 +1,6 @@
-import Hero from "@/components/hero";
-import ProjectCard from "@/components/project-card";
+import Hero from "@/components/core/hero";
+import ProjectCard from "@/components/core/projects-section/project-card";
+import Skills from "@/components/core/skills";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -8,18 +9,17 @@ export default function Home() {
       <Hero />
 
       <section className="py-16">
-        <h2 className="text-2x1 font-bold mb-8">
-          Featured Projects
-        </h2>
-
+        <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects
-            .filter((p) => p.featured)
-            .map((projects) => (
-              <ProjectCard key={projects.title} {...projects} />
+            .filter((p) => p.featured) // now this works
+            .map((project) => (
+              <ProjectCard key={project.title} {...project} />
             ))}
         </div>
       </section>
+      
+       <Skills />
     </main>
   )
 }
