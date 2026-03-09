@@ -11,14 +11,14 @@ export default function Hero() {
             </p>
 
             <div className="mt-6 flex justify-center gap-4">
-                <a href="/projects" className="px-6 py-3 bg-black text-white rounded">
+                <a href="/projects" className="px-6 py-3 bg-black text-white rounded dark:bg-white dark:text-black">
                     View Projects
                 </a>
 
                 <a 
                    //href="https://docs.erzan.dev"
                    href="http://localhost:3000" target="blank"
-                   className="px-6 py-3 border rounded"
+                   className="px-6 py-3 border rounded border-white"
                 >
                     Engineering Docs
                 </a>

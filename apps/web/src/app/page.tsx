@@ -1,6 +1,7 @@
-import Hero from "@/components/hero";
-import ProjectCard from "@/components/project-card";
-import Skills from "@/components/skills";
+import Hero from "@/components/core/hero";
+import ProjectCard from "@/components/core/project-card";
+import Skills from "@/components/core/skills";
+import ThemeToggle from "@/components/dark-mode-toggle/theme-toggle";
 import { projects } from "@/data/projects";
 
 export default function Home() {

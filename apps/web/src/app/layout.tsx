@@ -1,11 +1,12 @@
 import "./globals.css"
-import Navbar from "@/components/navbar"
+import Navbar from "@/components/core/navbar"
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Footer from "@/components/footer";
+import Footer from "@/components/core/footer";
+import ThemeToggle from "@/components/dark-mode-toggle/theme-toggle";
+import { ThemeProvider } from "@/components/dark-mode-toggle/theme-provider";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
 
 export default function RootLayout({
   children,
@@ -13,11 +14,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <Navbar />
-          {children}
-        <Footer />
+    <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
+      {/* <body className="bg-white text-gray-900 dark:text-gray-100 dark:bg-black"> */}
+      <body className="bg-white dark:bg-black text-black dark:text-white">
+        <ThemeProvider>
+          <Navbar />
+            {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
