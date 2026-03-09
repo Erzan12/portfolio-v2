@@ -18,6 +18,11 @@ yarn start
 npm start
 ```
 
+## Run docusaurus with specific port so no conflict with next
+```bash
+npm run start -- --port 3001
+```
+
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ## Build
