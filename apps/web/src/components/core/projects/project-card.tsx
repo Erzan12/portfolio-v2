@@ -1,6 +1,5 @@
 "use client";
 
-import { useGithubStars } from "@/components/hooks/useGithubStars";
 import { Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { useGithubRepos } from "@/components/hooks/useGithubRepos";
@@ -21,11 +20,10 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0},
-}
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function ProjectCard({ title, description, stack, repo, github }: Props) {
-  // const stars = useGithubStars(github);
   const repos = useGithubRepos();
 
   const techColors: Record<string, string> = {
@@ -45,25 +43,27 @@ export default function ProjectCard({ title, description, stack, repo, github }:
 
   return (
     <motion.div
-        className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-shadow duration-300"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={container}
-      >
-      {/* Project Title with gradient underline */}
+      className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-shadow duration-300
+                 w-[360px] h-[420px] flex flex-col justify-between overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={container}
+    >
+      {/* Title */}
       <h3 className="text-xl font-semibold text-black dark:text-white relative after:block after:h-0.5 after:w-0 after:bg-gradient-to-r 
           after:from-blue-400 after:to-purple-500 after:absolute after:-bottom-1 after:left-0 after:transition-all hover:after:w-full">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+      <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed overflow-hidden line-clamp-5">
         {description}
       </p>
 
+      {/* Tech Stack */}
       <motion.div
-        className="mt-4 flex flex-wrap gap-2"
+        className="mt-4 flex flex-wrap gap-2 overflow-auto max-h-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -83,7 +83,7 @@ export default function ProjectCard({ title, description, stack, repo, github }:
         ))}
       </motion.div>
 
-      {/* GitHub link with stars */}
+      {/* GitHub link */}
       <a
         href={`https://github.com/${github}`}
         target="_blank"
