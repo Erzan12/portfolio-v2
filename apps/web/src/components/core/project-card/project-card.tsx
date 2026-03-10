@@ -40,11 +40,6 @@ export default function ProjectCard({ title, description, stack, github }: Props
   };
 
   return (
-    // <motion.div
-    //   whileHover={{ y: -6, scale: 1.02 }}
-    //   transition={{ type: "spring", stiffness: 200, damping: 20 }}
-    //   className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-shadow duration-300"
-    // >
     <motion.div
         className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-shadow duration-300"
         initial="hidden"
@@ -92,7 +87,11 @@ export default function ProjectCard({ title, description, stack, github }: Props
       >
         <Github size={16} />
         View Repository
-        {stars !== null && <span className="ml-1 text-gray-600 dark:text-gray-300">⭐ {stars}</span>}
+        {stars ? (
+          <span className="ml-1 text-gray-600 dark:text-gray-300">
+            ⭐ {stars}
+          </span>
+        ) : null}
       </a>
     </motion.div>
   );
