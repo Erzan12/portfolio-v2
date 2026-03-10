@@ -10,6 +10,7 @@ export async function GET(req: Request) {
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // cache for 1 hour
   });
   const data = await res.json();
 
