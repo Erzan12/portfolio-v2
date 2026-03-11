@@ -5,8 +5,8 @@ title: Demo
 
 ## Card Automation
 
-- Cards automatically rotate every 5 seconds.  
-- Hovering over a card pauses the animation.
+### Cards automatically rotate every 5 seconds.  
+### Hovering over a card pauses the animation.
 
 #### Light Theme
 
