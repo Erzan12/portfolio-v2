@@ -1,16 +1,47 @@
-<!-- # Demo
+---
+id: demo
+title: Demo
+---
 
 ## Card Automation
 
-Cards automatically rotate every 5 seconds.  
-Hovering over a card pauses the animation.
+- Cards automatically rotate every 5 seconds.  
+- Hovering over a card pauses the animation.
 
-![Card Automation](./assets/card-automation.gif)
+#### Light Theme
+
+![Card Automation](../static/gif/feature-project-light.gif)
+
+#### Dark Theme
+
+![Card Automation](../static/gif/feature-project-dark.gif)
 
 ---
 
 ## Navigation
 
-Explore the platform and documentation.
+### Explore the platform and portfolio.
 
-![Navigation Demo](./assets/navigation-demo.gif) -->
+#### Light Theme
+
+![Navigation Demo](../static/gif/navigation-light.gif)
+
+#### Dark Theme
+
+![Navigation Demo](../static/gif/navigation-dark.gif)
+
+### The System design section
+
+#### Light Theme
+
+![Navigation Demo](../static/gif/navigation-system-design.gif)
+
+### Navigating through the documentation
+
+#### Light Theme
+
+![Navigation Demo](../static/gif/navigation-docs-light.gif)
+
+#### Dark Theme
+
+![Navigation Demo](../static/gif/navigation-docs-dark.gif)
