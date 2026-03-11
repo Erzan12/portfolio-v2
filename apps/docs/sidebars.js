@@ -36,50 +36,72 @@
 // sidebars.js
 const sidebars = {
   tutorialSidebar: [
-    'intro', // homepage doc first
-    'vision',
-    'roadmap',
-    'architecture',
-    'tech-stack',
-    'deployment',
     {
       type: 'category',
-      label: 'Web',
+      label: 'Introduction',
       items: [
-        'Web/overview',
-        'Web/structure',
-        'Web/ui-systems',
-        'Web/github-integration',
+        'introduction',
+        'vision',
       ],
     },
+
+    {
+      type: 'category',
+      label: 'Getting Started',
+      items: [
+        'installation',
+        'tech-stack',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Guides',
+      items: [
+        {
+          type: 'category',
+          label: 'Platform',
+          items: [
+            'Web/overview',
+            'Web/structure',
+            'Web/ui-systems',
+            'Web/github-integration',
+          ],
+        },
+      ],
+    },
+
     {
       type: 'category',
       label: 'Engineering',
       items: [
+        'architecture',
         'Engineering/engineering-decisions',
-        'Engineering/scalability',
         'Engineering/philosophy',
         'Engineering/performance',
+        'Engineering/scalability',
       ],
     },
-    {
-      type: 'category',
-      label: 'Roadmap',
-      items: [
-        'Roadmap/development-roadmap',
-      ],
-    },
+
     {
       type: 'category',
       label: 'Case Studies',
       items: [
-        'Case-studies/intro',
+        'Case-studies/introduction',
         'Case-studies/portfolio-platform',
         'Case-studies/erp-backend-api',
       ],
     },
-    
+
+    {
+      type: 'category',
+      label: 'Roadmap',
+      items: [
+        'roadmap',
+        'Roadmap/development-roadmap',
+      ],
+    },
   ],
 };
 
-export default sidebars;
+module.exports = sidebars;

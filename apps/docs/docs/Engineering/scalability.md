@@ -3,7 +3,7 @@ id: scalability
 title: Scalability
 ---
 
-# Portfolio v2 - Scalability
+# Scalability
 
 ## Project Structure
 
