@@ -61,6 +61,8 @@ export default function SystemDesign() {
                         key={system.title}
                         {...system}
                         techColors={techColors}
+                        showArchitectureLink={true}
+                        showRepositoryLink={false}
                     />
                 ))}
             </motion.div>
