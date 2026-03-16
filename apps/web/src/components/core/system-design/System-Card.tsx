@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
+import { getRelativeTime } from "@/lib/helper/date-format.helper";
 
 const container = {
     hidden: {},
@@ -21,9 +22,14 @@ type Props = {
     description: string;
     stack?: string[];
     topics?: string[];
+    stars?: number;
+    forks?: number;
+    language?: string | null;
     last_update?: string;
     link?: string;
+    issues?: boolean;
     showArchitectureLink: boolean;
+    showRepositoryLink: boolean;
     techColors: Record<string, string>;
 };
 
@@ -32,9 +38,14 @@ export default function SystemCard({
     description,
     stack,
     topics,
+    language,
+    stars,
+    forks,
     last_update,
     link,
+    issues,
     showArchitectureLink = true,
+    showRepositoryLink = true,
     techColors,
 }: Props) {
     return (
@@ -80,6 +91,31 @@ export default function SystemCard({
             {showArchitectureLink && link &&(
                 <Link href={link} className="inline-block mt-4 underline" target="_black">
                     Read Architecture
+                </Link>
+            )}
+
+            <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                {language && (
+                    <span className="font-medium">{language}</span>
+                )}
+                {stars !== undefined && (
+                    <span>⭐ {stars}</span>
+                )}
+                {forks !== undefined && (
+                    <span>🍴 {forks}</span>
+                )}
+                {last_update && ( 
+                    <span> Updated {getRelativeTime(last_update)} </span> 
+                )}
+                
+            </div>
+            {showRepositoryLink && link && (
+                <Link
+                    href={link}
+                    target="_blank"
+                    className="inline-block mt-4 text-sm font-medium underline"
+                >
+                    View Repository
                 </Link>
             )}
         </div>
