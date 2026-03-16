@@ -2,8 +2,19 @@
 
 import { motion } from "framer-motion";
 import SystemCard from "@/components/core/system-design/System-Card";
+import { useGithubRepos } from "@/components/hooks/useGithubRepos";
+
+type GithubRepo = {
+  id: number;
+  name: string;
+  description: string;
+  updated_at: string;
+}
 
 export default function ProjectsPage() {
+  const { repos } = useGithubRepos();
+
+  console.log(repos);
 
   const techColors: Record<string, string> = {
       React: "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100",
@@ -50,14 +61,18 @@ export default function ProjectsPage() {
         </h1>
 
         <p className="text-gray-500 mb-12">
-          This section higglights all my development projects.
+          This section highlights all my development projects.
         </p>
 
         <motion.div className="grid md:grid-cols-2 gap-6">
-          {systems.map((system) => (
+          {repos.map((repo: GithubRepo) => (
             <SystemCard
-              key={system.title}
-              {...system}
+              key={repo.id}
+              title={repo.name}
+              description={repo.description ?? "No description provided"}
+              last_update={repo.updated_at}
+              link={`https://github.com/Erzan12/${repo.name}`}
+              showArchitectureLink={false}
               techColors={techColors}
             />
           ))}
