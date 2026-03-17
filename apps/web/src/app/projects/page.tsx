@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SystemCard from "@/components/core/system-design/System-Card";
-import { useGithubRepos } from "@/components/hooks/useGithubRepos";
+import { useGithubRepos } from "@/hooks/useGithubRepos";
 
 type GithubRepo = {
   id: number;
