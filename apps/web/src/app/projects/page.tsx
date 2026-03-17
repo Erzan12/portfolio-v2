@@ -18,7 +18,7 @@ type GithubRepo = {
 export default function ProjectsPage() {
   const { repos } = useGithubRepos();
 
-  console.log(repos);
+  // console.log(repos);
 
   const techColors: Record<string, string> = {
       React: "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100",
@@ -35,9 +35,9 @@ export default function ProjectsPage() {
       CodeIgniter: "bg-red-50 text-red-900 dark:bg-red-900 dark:text-red-50",
   };
 
-  const sortedRepos = [...repos].sort((a, b) => {
-    return new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime();
-  });
+  const sortedRepos = repos.sort(
+    (a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
+  );
 
   const systems = [
       {
