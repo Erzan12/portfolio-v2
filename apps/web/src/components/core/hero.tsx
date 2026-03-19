@@ -33,13 +33,13 @@ export default function Hero() {
           >
             Engineering Docs
           </a> */}
-          <HeroButton href="/projects" variant="default">
+          <HeroButton href="/projects" variant="primary">
             View Projects
           </HeroButton>
 
           <HeroButton
             href="https://erzan-docs.vercel.app/docs/architecture"
-            variant="outline"
+            variant="secondary"
             external
           >
             Engineering Docs
