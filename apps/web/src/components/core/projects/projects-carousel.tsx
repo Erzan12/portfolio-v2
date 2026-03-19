@@ -13,34 +13,35 @@ type Props = {
 
 export default function ProjectsCoverflowCarousel({ projects, repos }: Props) {
   const [index, setIndex] = useState(0);
-  const [cardWidth, setCardWidth] = useState(360); // default desktop
+  const [cardWidth, setCardWidth] = useState(360); 
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % projects.length); // auto-next
-    }, 5000); // 5000ms = 5 seconds per card
+      setIndex((i) => (i + 1) % projects.length); 
+    }, 5000); 
 
-    return () => clearInterval(interval); // cleanup on unmount
+    return () => clearInterval(interval); 
   }, [projects.length, isPaused]);
 
-  //update card width on client only
   useEffect(() => {
     const updateWidth = () => {
-      if (window.innerWidth < 640) setCardWidth(280);      // mobile
-      else if (window.innerWidth < 1024) setCardWidth(320); // tablet
-      else setCardWidth(360);                               // desktop
+      // Made mobile card slightly smaller to fit better on screens like iPhone SE
+      if (window.innerWidth < 640) setCardWidth(260);      
+      else if (window.innerWidth < 1024) setCardWidth(320); 
+      else setCardWidth(360);                               
     };
 
-    updateWidth(); // initial
+    updateWidth(); 
     window.addEventListener("resize", updateWidth);
 
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const SPACING = cardWidth + 80; // spacing between cards
+  // Adjusted spacing for mobile. If it's a small card, reduce the gap.
+  const SPACING = cardWidth < 300 ? cardWidth + 40 : cardWidth + 80; 
   const SCALE_SIDE = 0.75;
   const ROTATION = 25;
 
@@ -62,22 +63,25 @@ export default function ProjectsCoverflowCarousel({ projects, repos }: Props) {
   return (
     <div className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
       <div 
-        className="relative w-full h-[440px] flex items-center justify-center perspective-[1200px] overflow-visible md:overflow-hidden"
+        // CHANGED: Force overflow-hidden on all screen sizes to prevent horizontal scroll
+        className="relative w-full h-[440px] flex items-center justify-center perspective-[1200px] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)} // Added touch pause for mobile
+        onTouchEnd={() => setIsPaused(false)}
       >
         {/* Arrows */}
         <button
           onClick={prev}
-          className="absolute left-2 z-20 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:scale-110 transition"
+          className="absolute left-2 md:left-4 z-20 bg-white dark:bg-gray-800 p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition"
         >
-          <ChevronLeft size={28} />
+          <ChevronLeft size={24} className="md:w-7 md:h-7" />
         </button>
         <button
           onClick={next}
-          className="absolute right-2 z-20 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:scale-110 transition"
+          className="absolute right-2 md:right-4 z-20 bg-white dark:bg-gray-800 p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition"
         >
-          <ChevronRight size={28} />
+          <ChevronRight size={24} className="md:w-7 md:h-7" />
         </button>
 
         {/* Cards */}
@@ -89,10 +93,10 @@ export default function ProjectsCoverflowCarousel({ projects, repos }: Props) {
                 key={project.title}
                 animate={pos}
                 transition={{ type: "spring", stiffness: 260, damping: 25 }}
-                className="absolute h-[420px] origin-center md:mx-2"
+                className="absolute h-[420px] origin-center"
                 style={{ width: cardWidth, zIndex: pos.zIndex, perspective: 1200 }}
               >
-                <ProjectCard {...project} repos={repos} />
+                <ProjectCard {...project} repo={repos} />
               </motion.div>
             );
           })}
@@ -105,7 +109,7 @@ export default function ProjectsCoverflowCarousel({ projects, repos }: Props) {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full transition-colors ${
+            className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-colors ${
               i === index ? "bg-blue-500" : "bg-gray-400"
             }`}
           />
