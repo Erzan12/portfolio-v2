@@ -22,10 +22,16 @@ type GithubRepo = {
 const ITEMS_PER_PAGE = 9;
 
 export default function ProjectsPage() {
+  //github api call or query
   const { repos, loading } = useGithubRepos();
-  
   //add state for the current page
   const [currentPage, setCurrentPage] = useState(1);
+  //search handler
+  const [ searchQuery, setSearchQuery ] = useState(""); // search state
+  //for category
+  const [activeCategory, setActiveCategory] = useState("All");
+  //define category for sort
+  const CATEGORIES = ["All", "React", "NextJS", "TypeScript", "PHP", "Laravel", "HTML"];
 
   const techColors: Record<string, string> = {
       React: "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100",
@@ -46,28 +52,31 @@ export default function ProjectsPage() {
   //   ? [...repos].sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime())
   //   : [];
 
-  //search handler
-  const [ searchQuery, setSearchQuery ] = useState(""); // search state
-
   //filter and sort logic
   const filteredRepos = useMemo(() => {
     if (!repos) return [];
-    
-    //first, sort by date
-    const sorted = [...repos].sort(
-      (a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
-    );
 
-    //then, filter by search query (name or description)
-    return sorted.filter((repo) => {
-      const nameMatch = repo.name.toLowerCase().includes(searchQuery.toLowerCase());
-      const descMatch = repo.description?.toLowerCase().includes(searchQuery.toLowerCase());
-      const langMatch = repo.language?.toLowerCase().includes(searchQuery.toLowerCase()); //added language search
-      return nameMatch || descMatch || langMatch;
-    });
-  }, [repos, searchQuery]);
+    return repos
+      .filter((repo) => {
+        //category Filter
+        const categoryMatch = 
+          activeCategory === "All" || 
+          repo.language === activeCategory || 
+          repo.name.toLowerCase().includes(activeCategory.toLowerCase());
 
-    //pagination Math
+        //search Filter
+        const searchTerm = searchQuery.toLowerCase();
+        const searchMatch = 
+          repo.name.toLowerCase().includes(searchTerm) || 
+          (repo.description?.toLowerCase().includes(searchTerm) ?? false);
+
+        //return true only if BOTH match
+        return categoryMatch && searchMatch;
+      })
+      .sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime());
+  }, [repos, searchQuery, activeCategory]);
+
+  //pagination Math
   const totalPages = Math.ceil(filteredRepos.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   //slice the array to only get the 9 items for the current page
@@ -121,6 +130,33 @@ export default function ProjectsPage() {
               </button>
             )}
           </div>
+        </div>
+
+        {/*added sorting category section for tech stack used*/}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setActiveCategory(cat);
+                setCurrentPage(1); //always reset to page 1!
+              }}
+              className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeCategory === cat 
+                  ? "text-white" 
+                  : "text-muted-foreground hover:text-foreground bg-secondary/50"
+              }`}
+            >
+              {activeCategory === cat && (
+                <motion.div
+                  layoutId="activeCategory"
+                  className="absolute inset-0 bg-primary rounded-full -z-10"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              {cat}
+            </button>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px]">
