@@ -73,11 +73,6 @@ export default function Skills() {
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
-  // const item = {
-  //   hidden: { opacity: 0, y: 20 },
-  //   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  // };
-
   return (
     <section className="py-20 max-w-6xl mx-auto px-1">
       <div className="mb-16">
