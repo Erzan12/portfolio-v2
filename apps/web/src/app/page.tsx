@@ -15,23 +15,26 @@ export default function Home() {
   return (
     <main className="container mx-auto px-6 overflow-x-hidden">
       <Hero />
-      <section className="py-16">
-        <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
-        {/* <div className="grid md:grid-cols-2 gap-6">
-          {projects
-            .filter((p) => p.featured)
-            .map((project) => (
-              <ProjectCard key={project.title} {...project}
-              repos={repos} />
-            ))}
-        </div> */}
-        <ProjectsCarousel
-          projects={projects.filter((p) => p.featured)}
-          repos={repos}
-        />
+      <section className="py-20 max-w-6xl mx-auto px-4">
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold tracking-tight font-sans mb-8">Featured Projects</h2>
+          <div className="h-1 w-20 bg-primary rounded-full" />
+          {/* <div className="grid md:grid-cols-2 gap-6">
+            {projects
+              .filter((p) => p.featured)
+              .map((project) => (
+                <ProjectCard key={project.title} {...project}
+                repos={repos} />
+              ))}
+          </div> */}
+          <ProjectsCarousel
+            projects={projects.filter((p) => p.featured)}
+            repos={repos}
+          />
+        </div>
       </section>
       <Skills />
-      <Faq02 />
+      {/* <Faq02 /> */}
     </main>
   )
 }
