@@ -13,6 +13,7 @@ import HowIThink from "@/components/core/how-i-think";
 import CaseStudy from "@/components/core/project-case";
 import CurrentlyLearning from "@/components/core/current-learning";
 import Lab from "@/components/core/experimental-lab";
+import Tabs from "@/components/core/tabs";
 
 export default function Home() {
   const repos = useGithubRepos();
@@ -37,6 +38,7 @@ export default function Home() {
           />
         </div>
       </section>
+      <Tabs />
       <Skills />
       <CaseStudy />
       <HowIThink />
