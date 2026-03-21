@@ -6,8 +6,6 @@ import ProjectCard from "@/components/core/projects/project-card";
 import Skills from "@/components/core/skills";
 import { useGithubRepos } from "@/hooks/useGithubRepos";
 import { projects } from "@/data/projects";
-
-import Faq02 from "../components/core/faq/faq-02"
 import ProjectsCarousel from "@/components/core/projects/projects-carousel";
 import HowIThink from "@/components/core/how-i-think";
 import CaseStudy from "@/components/core/project-case";
