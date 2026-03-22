@@ -51,18 +51,18 @@ export default function ProjectCard({ title, description, stack, repo, github }:
       viewport={{ once: true, amount: 0.2 }}
       variants={container}
     >
-      {/* Title */}
+      {/* title */}
       <h3 className="text-xl font-semibold text-black dark:text-white relative after:block after:h-0.5 after:w-0 after:bg-gradient-to-r 
           after:from-blue-400 after:to-purple-500 after:absolute after:-bottom-1 after:left-0 after:transition-all hover:after:w-full">
         {title}
       </h3>
 
-      {/* Description */}
+      {/* description */}
       <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed overflow-hidden line-clamp-5">
         {description}
       </p>
 
-      {/* Tech Stack */}
+      {/* tech stack */}
       <motion.div
         className="mt-4 flex flex-wrap gap-2 overflow-auto max-h-16"
         initial="hidden"
@@ -84,7 +84,7 @@ export default function ProjectCard({ title, description, stack, repo, github }:
         ))}
       </motion.div>
 
-      {/* GitHub link */}
+      {/* gitHub link */}
       <a
         href={`https://github.com/${github}`}
         target="_blank"
@@ -92,12 +92,6 @@ export default function ProjectCard({ title, description, stack, repo, github }:
       >
         <Github size={16} />
         View Repository
-        {/* {repos && repos[repo] && (
-          <>
-            <span>⭐ {repos[repo].stars}</span>
-            <span>🍴 {repos[repo].forks}</span>
-          </>
-        )} */}
         {currentRepo && (
           <>
             <span>⭐ {currentRepo.stars}</span>

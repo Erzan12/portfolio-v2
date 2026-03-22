@@ -26,13 +26,12 @@ const item: Variants = {
 export default function About() {
   return (
     <div className="min-h-screen pt-10 md:pt-20 pb-10">
-      {/* Added px-4 sm:px-6 to give breathing room on mobile devices */}
+      {/*added px-4 sm:px-6 to give breathing room on mobile devices */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* <div className="flex justify-end mb-6">
           <ThemeToggle />
         </div> */}
 
-        
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -40,7 +39,7 @@ export default function About() {
           </Link>
         </motion.div>
 
-        {/* Removed fixed heights. Switched to a 1-col (mobile) -> 2-col (tablet) -> 5-col (desktop) grid layout */}
+        {/*removed fixed heights. switched to a 1-col (mobile) -> 2-col (tablet) -> 5-col (desktop) grid layout */}
         <motion.div 
           variants={container}
           initial="hidden"
@@ -49,7 +48,7 @@ export default function About() {
         >
 
           <motion.div variants={item} className="md:col-span-2 lg:col-span-2 lg:row-span-2">
-            {/* About Me - Tall Card (Top Left) */}
+            {/* Abbout Me - tall card (top left) */}
             <Card
               id="about"
               className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
@@ -99,7 +98,7 @@ export default function About() {
             </Card>
           </motion.div>
           <motion.div variants={item} className="md:col-span-2 lg:col-span-2 lg:row-span-1">
-            {/* Experience - Medium Card (Top Middle) */}
+            {/* Experience - medium card (top middle) */}
             <Card
               id="experience"
               className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
@@ -140,8 +139,7 @@ export default function About() {
           </motion.div>
           
           <motion.div variants={item} className="md:col-span-1 lg:col-span-1 lg:row-span-1">
-            {/* Status - Square Card (Top Right) */}
-            {/* <Card className="md:col-span-1 lg:col-span-2 p-6 bg-card border border-border relative overflow-hidden rounded-2xl shadow-none"> */}
+            {/* Status - square card (top right) */}
             <Card className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none">
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-4">
@@ -165,7 +163,7 @@ export default function About() {
           </motion.div>
 
           <motion.div variants={item} className="md:col-span-1 lg:col-span-1 lg:row-span-1">
-            {/* Social Links - Square Card (Bottom Left) */}
+            {/* Social Links - square card (bottom left) */}
             <Card
               id="contact"
               className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
@@ -199,7 +197,7 @@ export default function About() {
           </motion.div>
           
           <motion.div variants={item} className="md:col-span-2 lg:col-span-2 lg:row-span-1">
-            {/* Selected Projects - Large Card (Bottom Right) */}
+            {/* Selected Projects - large card (bottom right) */}
             <Card
               id="projects"
               className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
@@ -219,7 +217,7 @@ export default function About() {
                         <Badge variant="outline" className="text-xs font-sans rounded-full">Vite</Badge>
                       </div>
                     </div>
-                    {/* Fixed External Link Implementation */}
+                    {/* fixed external link implementation */}
                     <a href="https://github.com/Erzan12/slsu-clinic-appointment-system" target="_blank" rel="noopener noreferrer">
                       <Button
                         size="sm"
@@ -243,7 +241,7 @@ export default function About() {
                         <Badge variant="outline" className="text-xs font-sans rounded-full">PHP</Badge>
                       </div>
                     </div>
-                    {/* Fixed External Link Implementation */}
+                    {/* fixed External link implementation */}
                     <a href="https://github.com/Erzan12/qr-code-attendance-management-system" target="_blank" rel="noopener noreferrer">
                       <Button
                         size="sm"
@@ -289,7 +287,7 @@ export default function About() {
           </motion.div>
 
           <motion.div variants={item} className="md:col-span-2 lg:col-span-3 lg:row-span-1">
-            {/* Other Information - Medium Card (Top Middle) */}
+            {/* Other Information - medium card (top middle) */}
             <Card
               id="experience"
               className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"

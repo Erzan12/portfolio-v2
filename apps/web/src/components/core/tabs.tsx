@@ -12,7 +12,7 @@ const AnimatedFlame = ({ isActive }: { isActive: boolean }) => (
   <motion.div
     animate={isActive ? {
       scale: [1, 1.2, 1.1, 1.25, 1],
-      color: ["#ef4444", "#f97316", "#ef4444"], // Red to Orange flickering
+      color: ["#ef4444", "#f97316", "#ef4444"], //red to orange flickering
       filter: ["drop-shadow(0 0 2px #ef4444)", "drop-shadow(0 0 8px #f97316)", "drop-shadow(0 0 2px #ef4444)"]
     } : { color: "#9ca3af" }}
     transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
@@ -110,7 +110,7 @@ export default function Tabs() {
                 </div>
             </div>
 
-            {/* Tab Content */}
+            {/* tab content */}
             <div className="mt-6">
                 {activeTab === "cooking" && <CookingTab />}
                 {activeTab === "learning" && <LearningTab />}

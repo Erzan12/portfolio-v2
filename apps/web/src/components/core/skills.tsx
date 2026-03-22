@@ -1,15 +1,11 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Server, Layout, Database, Terminal, Code2, Cpu } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Variants } from "framer-motion";
+import { Server, Layout, Database, Terminal, } from "lucide-react";
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiNestjs, SiPrisma, 
   SiPostgresql, SiDocker, SiTailwindcss, SiPhp, SiLaravel, 
-  SiCodeigniter, SiNodedotjs, SiExpress, SiLinux, SiGit, 
-  SiVercel, SiMysql, SiRedis, SiFramer 
+  SiCodeigniter, SiNodedotjs, SiExpress, SiGit, SiFramer 
 } from "react-icons/si";
 import { ReactNode } from "react";
 import SkillCard from "./skills/skill-card";
@@ -24,7 +20,7 @@ const item: Variants = {
     y: 0, 
     transition: { 
       duration: 0.5, 
-      ease: "easeOut" //TypeScript now knows this is a valid Easing string
+      ease: "easeOut"
     } 
   },
 };
@@ -46,7 +42,6 @@ const techIcons: Record<string, { icon: ReactNode, color: string }> = {
   "Express": { icon: <SiExpress />, color: "#000000" },
   "Git": { icon: <SiGit />, color: "#F05032" },
   "Framer Motion": { icon: <SiFramer />, color: "#0055FF" },
-  // ... add the rest as needed
 };
 
 const skillData = [
@@ -55,28 +50,28 @@ const skillData = [
     icon: <Server className="w-6 h-6 text-red-500" />,
     items: ["NestJS", "PHP", "Laravel", "CodeIgniter", "Node.js", "Express"],
     description: "Architecting scalable server-side systems and RESTful APIs with a focus on performance and clean code.",
-    gridConfig: "md:col-span-7 lg:row-span-2", // Large primary card
+    gridConfig: "md:col-span-7 lg:row-span-2", //large primary card
   },
   {
     category: "Frontend",
     icon: <Layout className="w-6 h-6 text-blue-500" />,
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     description: "Building interactive, high-performance web interfaces.",
-    gridConfig: "md:col-span-5 lg:row-span-1", // Compact secondary card
+    gridConfig: "md:col-span-5 lg:row-span-1", //compact secondary card
   },
   {
     category: "DevOps",
     icon: <Terminal className="w-6 h-6 text-teal-500" />,
     items: ["Docker", "Linux", "Git", "Vercel", "CI/CD"],
     description: "Streamlining deployment workflows.",
-    gridConfig: "md:col-span-5 lg:row-span-1", // Fits under Frontend
+    gridConfig: "md:col-span-5 lg:row-span-1", //fits under Frontend
   },
   {
     category: "Databases",
     icon: <Database className="w-6 h-6 text-indigo-500" />,
     items: ["PostgreSQL", "MySQL", "Prisma", "Redis"],
     description: "Relational modeling and query optimization.",
-    gridConfig: "md:col-span-12 lg:row-span-1", // Full-width footer card
+    gridConfig: "md:col-span-12 lg:row-span-1", //full widt footer card
   },
 ];
 
@@ -88,7 +83,7 @@ export default function Skills() {
         <div className="h-1 w-20 bg-primary rounded-full" />
       </div>
 
-      {/* Bento Grid Logic: 
+      {/* bento grid 
          - 12 columns on desktop for maximum layout control.
          - grid-auto-rows-[minmax(180px,auto)] ensures cards have a base height 
            but can grow if needed.
@@ -99,7 +94,7 @@ export default function Skills() {
             key={skill.category} 
             skill={skill} 
             index={index} 
-            className={skill.gridConfig} // Pass the layout config here
+            className={skill.gridConfig} // pass the layout config here
           />
         ))}
       </div>

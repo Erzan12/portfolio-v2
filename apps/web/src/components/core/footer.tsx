@@ -61,46 +61,9 @@ export default function Footer() {
         </form> */}
         {/* Branding / copyright */}
         <p className="text-center">
-          © {new Date().getFullYear()} erzan.dev. Built with NextJS ❤️
+          © {new Date().getFullYear()} erzan-dev.vercep.app built with NextJS ❤️
         </p>
       </div>
     </footer>
-
-    // <footer className="bg-footer-bg dark:bg-footer-dark-bg py-12 border-t border-footer-border dark:border-cream-dark-700">
-    //   <div className="max-w-7xl mx-auto px-6">
-    //     {/* Main footer content */}
-    //     <div className="text-footer-text dark:text-footer-dark-text grid md:grid-cols-4 gap-8 pb-8">
-    //       <div>
-    //         <h3 className="text-footer-accent dark:text-footer-dark-accent font-bold mb-4">
-    //           Your Logo
-    //         </h3>
-    //         <p className="text-footer-text-muted dark:text-footer-dark-muted text-sm">
-    //           Warm, inviting description...
-    //         </p>
-    //       </div>
-          
-    //       {/* Links column */}
-    //       <div>
-    //         <h4 className="text-cream-900 dark:text-footer-dark-text font-semibold mb-4">
-    //           Links
-    //         </h4>
-    //         <ul className="space-y-2">
-    //           <li>
-    //             <a href="#" className="text-footer-text-muted dark:text-footer-dark-muted 
-    //                 hover:text-footer-link-hover hover:underline text-sm transition-colors">
-    //               Home
-    //             </a>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     </div>
-        
-    //     {/* Bottom bar */}
-    //     <div className="pt-8 border-t border-footer-border/50 dark:border-footer-dark-accent/20 
-    //                     text-center text-footer-text-muted dark:text-footer-dark-muted text-xs">
-    //       © 2026 Your Site
-    //     </div>
-    //   </div>
-    // </footer>
   );
 }

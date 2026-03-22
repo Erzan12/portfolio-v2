@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowLeft, Database, ShieldCheck, Box } from "lucide-react";
+import { ArrowLeft, Database, ShieldCheck, Box } from "lucide-react";
 import SystemCard from "@/components/core/system-design/system-card";
 import { useGithubRepos } from "@/hooks/useGithubRepos";
 import { SystemCardSkeleton } from "@/components/core/system-design/system-card-skeleton";
@@ -60,7 +57,7 @@ export default function SystemDesign() {
   return (
     <main className="min-h-screen pt-20 pb-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section matching your style */}
+        {/* header section matching your style */}
         <div className="mb-12">
           <h1 className="text-3xl font-bold text-card-foreground font-sans tracking-tight">
             System Design
@@ -72,7 +69,7 @@ export default function SystemDesign() {
           </p>
         </div>
 
-        {/* Back Button */}
+        {/* back button */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -80,25 +77,25 @@ export default function SystemDesign() {
           </Link>
         </motion.div>
 
-        {/* Grid Layout matching About Page grid behavior */}
+        {/* grid layout matching About Page grid behavior */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading || !repos || repos.length === 0 ? (
-            // 1. Loading State: Show 6 Skeletons
+            // loading state: Show 6 Skeletons
             Array.from({ length: 6 }).map((_, i) => (
               <SystemCardSkeleton key={`project-skeleton-${i}`} />
             ))
           ) : (
             systems.map((system) => (
               <SystemCard
-                  key={system.title}
-                  title={system.title}
-                  description={system.description}
-                  stack={system.stack}
-                  link={system.link}
-                  icon={system.icon} // Pass the lucide icon here
-                  techColors={techColors}
-                  showArchitectureLink={true}
-                  showRepositoryLink={false}
+                key={system.title}
+                title={system.title}
+                description={system.description}
+                stack={system.stack}
+                link={system.link}
+                icon={system.icon} //pass the lucide icon here
+                techColors={techColors}
+                showArchitectureLink={true}
+                showRepositoryLink={false}
               />
             ))
           )}

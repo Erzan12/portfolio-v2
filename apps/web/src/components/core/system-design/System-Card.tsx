@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton"; // Make sure to import this
 import { ExternalLink, Github } from "lucide-react";
 import { getRelativeTime } from "@/lib/helper/date-format.helper";
 import { formatCommitDate } from "@/lib/helper/format-commit-date.helper";
@@ -137,56 +136,5 @@ export default function SystemCard({
         </CardFooter>
       </Card>
     </motion.div>
-    
   );
 }
-
-/**
- * Loading Skeleton Version
- */
-// export function SystemCardSkeleton() {
-//   return (
-//     <Card className="h-[480px] flex flex-col bg-card border-border rounded-2xl overflow-hidden shadow-none">
-//       <CardHeader className="p-6">
-//         {/* Circle Icon Placeholder */}
-//         <Skeleton className="w-12 h-12 rounded-full mb-4" />
-//         {/* Title Placeholder */}
-//         <Skeleton className="h-7 w-3/4 rounded-lg" />
-//         {/* GitHub Stats Placeholder */}
-//         <div className="flex gap-3 mt-2">
-//           <Skeleton className="h-3 w-12" />
-//           <Skeleton className="h-3 w-10" />
-//         </div>
-//       </CardHeader>
-
-//       <CardContent className="p-6 flex-1 flex flex-col">
-//         {/* Description Lines */}
-//         <div className="space-y-2 mb-4">
-//           <Skeleton className="h-4 w-full" />
-//           <Skeleton className="h-4 w-[90%]" />
-//           <Skeleton className="h-4 w-[95%]" />
-//         </div>
-
-//         {/* Badges Placeholder */}
-//         <div className="flex flex-wrap gap-2 mt-auto">
-//           <Skeleton className="h-6 w-16 rounded-full" />
-//           <Skeleton className="h-6 w-20 rounded-full" />
-//           <Skeleton className="h-6 w-14 rounded-full" />
-//         </div>
-//       </CardContent>
-
-//       <CardFooter className="p-6 pt-0 flex flex-col gap-3">
-//         {/* Date Placeholder */}
-//         <div className="space-y-1 mb-1">
-//           <Skeleton className="h-3 w-24" />
-//           <Skeleton className="h-2 w-32 opacity-50" />
-//         </div>
-//         {/* Buttons Placeholder */}
-//         <div className="flex gap-3 w-full">
-//           <Skeleton className="h-9 flex-1 rounded-full" />
-//           <Skeleton className="h-9 flex-1 rounded-full" />
-//         </div>
-//       </CardFooter>
-//     </Card>
-//   );
-// }

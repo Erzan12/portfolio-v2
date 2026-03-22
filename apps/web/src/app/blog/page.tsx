@@ -35,7 +35,7 @@ export default function BlogComingSoon() {
       <div className="min-h-screen pt-20 pb-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Back Button */}
+          {/* back button */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
             <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -49,7 +49,7 @@ export default function BlogComingSoon() {
             animate="show"
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            {/* Main Hero Card */}
+            {/* Main hero card */}
             <motion.div variants={item} className="md:col-span-3">
               <Card className="p-8 md:p-12 bg-olive-about-card/70 dark:bg-olive-dark-about-card border-border rounded-3xl relative overflow-hidden shadow-none">
                 <div className="absolute top-0 right-0 p-8 opacity-10">
@@ -86,7 +86,7 @@ export default function BlogComingSoon() {
               </Card>
             </motion.div>
 
-            {/* Progress Card */}
+            {/* progress card */}
             <motion.div variants={item}>
               <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -97,7 +97,7 @@ export default function BlogComingSoon() {
               </Card>
             </motion.div>
 
-            {/* Feature Card */}
+            {/* feature card */}
             <motion.div variants={item}>
               <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
                 <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -108,7 +108,7 @@ export default function BlogComingSoon() {
               </Card>
             </motion.div>
 
-            {/* Tech Stack Card */}
+            {/* tech stack card */}
             <motion.div variants={item}>
               <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
                 <div className="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">

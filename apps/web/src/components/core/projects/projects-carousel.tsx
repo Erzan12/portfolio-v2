@@ -12,12 +12,11 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
-import { projects } from "@/data/projects"; // Your data
-import { Project } from "@/lib/types/project"; // Your type
+import { Project } from "@/lib/types/project";
 
 interface ProjectsCarouselProps {
   projects: Project[];
-  repos: any; //or use the specific type from your hook
+  repos: any;
 }
 
 export default function ProjectCarousel({ projects, repos }: ProjectsCarouselProps) {
@@ -38,7 +37,7 @@ export default function ProjectCarousel({ projects, repos }: ProjectsCarouselPro
             >
               <Card className="h-[480px] flex flex-col bg-cream-100 dark:bg-cream-50/70 border-border rounded-2xl overflow-hidden shadow-none transition-all duration-300 hover:border-primary/50 group">
                 <CardHeader className="p-0">
-                  {/* Project Image Placeholder */}
+                  {/* project image placeholder */}
                   <div className="w-full h-48 bg-muted flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 group-hover:scale-105 transition-transform duration-500" />
                     <span className="text-muted-foreground relative z-10 font-sans text-sm italic">
@@ -86,8 +85,7 @@ export default function ProjectCarousel({ projects, repos }: ProjectsCarouselPro
             </CarouselItem>
           ))}
         </CarouselContent>
-        
-        {/* Navigation - Hidden on mobile, shown on md+ screens */}
+        {/* navigation - hidden on mobile, shown on md+ screens */}
         <div className="hidden md:block">
           <CarouselPrevious className="-left-12 border-border" />
           <CarouselNext className="-right-12 border-border" />

@@ -133,7 +133,7 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* Back Button */}
+        {/* back button */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
