@@ -3,9 +3,10 @@
 import { useState, useMemo } from "react"; //added useMemo for performance
 import { motion } from "framer-motion";
 import { useGithubRepos } from "@/hooks/useGithubRepos";
-import { Search, X } from "lucide-react"; // for search bar icons
+import { ArrowLeft, Search, X } from "lucide-react"; // for search bar icons
 import { SystemCardSkeleton } from "@/components/core/system-design/system-card-skeleton";
 import SystemCard from "@/components/core/system-design/system-card";
+import Link from "next/link";
 
 type GithubRepo = {
   id: number;
@@ -131,6 +132,14 @@ export default function ProjectsPage() {
             )}
           </div>
         </div>
+
+        {/* Back Button */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
+          <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </motion.div>
 
         {/*added sorting category section for tech stack used*/}
         <div className="flex flex-wrap gap-2 mb-8">

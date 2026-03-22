@@ -3,7 +3,8 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { motion, Variants } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, ExternalLink, MapPin, Facebook } from "lucide-react"
+import { Github, Linkedin, Twitter, Mail, ExternalLink, MapPin, Facebook, ArrowLeft } from "lucide-react"
+import Link from "next/link";
 // import ThemeToggle from "@/components/dark-mode-toggle/theme-toggle"
 
 // 1. Define the animation variants
@@ -31,6 +32,14 @@ export default function About() {
           <ThemeToggle />
         </div> */}
 
+        
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
+          <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </motion.div>
+
         {/* Removed fixed heights. Switched to a 1-col (mobile) -> 2-col (tablet) -> 5-col (desktop) grid layout */}
         <motion.div 
           variants={container}
@@ -38,12 +47,12 @@ export default function About() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
         >
-          
+
           <motion.div variants={item} className="md:col-span-2 lg:col-span-2 lg:row-span-2">
             {/* About Me - Tall Card (Top Left) */}
             <Card
               id="about"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="flex flex-col h-full relative z-10">
                 <div className="flex items-start gap-4 mb-4">
@@ -93,7 +102,7 @@ export default function About() {
             {/* Experience - Medium Card (Top Middle) */}
             <Card
               id="experience"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="relative z-10">
                 <h3 className="font-bold text-card-foreground mb-4 font-sans">Experience</h3>
@@ -133,7 +142,7 @@ export default function About() {
           <motion.div variants={item} className="md:col-span-1 lg:col-span-1 lg:row-span-1">
             {/* Status - Square Card (Top Right) */}
             {/* <Card className="md:col-span-1 lg:col-span-2 p-6 bg-card border border-border relative overflow-hidden rounded-2xl shadow-none"> */}
-            <Card className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none">
+            <Card className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none">
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
@@ -159,7 +168,7 @@ export default function About() {
             {/* Social Links - Square Card (Bottom Left) */}
             <Card
               id="contact"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="relative z-10">
                 <h3 className="font-semibold text-card-foreground mb-4 font-sans">Connect</h3>
@@ -193,7 +202,7 @@ export default function About() {
             {/* Selected Projects - Large Card (Bottom Right) */}
             <Card
               id="projects"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="relative z-10 flex flex-col h-full justify-center">
                 <h3 className="font-bold text-card-foreground mb-4 font-sans">Selected Projects</h3>
@@ -253,7 +262,7 @@ export default function About() {
           <motion.div variants={item} className="md:col-span-1 lg:col-span-2 lg:row-span-1">
             <Card
               id="my-approach"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="relative z-10">
                 <h3 className="font-bold text-card-foreground mb-4 font-sans">My approach</h3>
@@ -283,7 +292,7 @@ export default function About() {
             {/* Other Information - Medium Card (Top Middle) */}
             <Card
               id="experience"
-              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card border border-border relative overflow-hidden rounded-2xl shadow-none"
+              className="h-full w-full p-6 bg-olive-about-card/70 dark:bg-olive-dark-about-card hover:bg-olive-about-card/40 dark:hover:bg-olive-dark-about-card/80 border border-border relative overflow-hidden rounded-2xl shadow-none"
             >
               <div className="relative z-10">
                 <h3 className="font-bold text-card-foreground mb-4 font-sans">Other Information</h3>

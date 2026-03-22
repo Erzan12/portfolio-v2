@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Database, ShieldCheck, Box } from "lucide-react";
+import { ExternalLink, ArrowLeft, Database, ShieldCheck, Box } from "lucide-react";
 import SystemCard from "@/components/core/system-design/system-card";
 import { useGithubRepos } from "@/hooks/useGithubRepos";
 import { SystemCardSkeleton } from "@/components/core/system-design/system-card-skeleton";
+import Link from "next/link";
 
 export default function SystemDesign() {
     const { repos, loading } = useGithubRepos();
@@ -70,6 +71,14 @@ export default function SystemDesign() {
             with a focus on scalability and clean code.
           </p>
         </div>
+
+        {/* Back Button */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
+          <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </motion.div>
 
         {/* Grid Layout matching About Page grid behavior */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
