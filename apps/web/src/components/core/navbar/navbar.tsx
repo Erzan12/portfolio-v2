@@ -25,6 +25,7 @@ export default function Navbar() {
           <NavLink href="/projects" onClick={() => setOpen(false)}> Projects </NavLink>
           <NavLink href="/system-design" onClick={() => setOpen(false)}> System Design </NavLink>
           <NavLink href="/about" onClick={() => setOpen(false)}> About </NavLink>
+          <NavLink href="/blog" onClick={() => setOpen(false)}> Blog </NavLink>
           <a
             href="https://erzan-docs.vercel.app"
             target="_blank"
@@ -73,6 +74,10 @@ export default function Navbar() {
 
             <NavLink href="/about" onClick={() => setOpen(false)}>
               About
+            </NavLink>
+
+            <NavLink href="/blog" onClick={() => setOpen(false)}>
+              Blog
             </NavLink>
 
             <a
