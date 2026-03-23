@@ -33,3 +33,19 @@ vercel:
 versioning:
   label: Versioning
   description: Version control and releases
+
+monorepo:
+  label: Monorepo
+  description: Converting to mono repo approach
+
+fullstack:
+  label: Fullstack
+  description: This is a Fullstack system
+
+nestjs:
+  label: NestJS
+  description: NestJS for backend
+
+nextjs:
+  label: NextJS
+  description: NextJS for frontend
