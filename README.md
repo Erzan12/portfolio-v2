@@ -118,7 +118,7 @@ This project is built with the following principles:
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/Erzan12/portfolio-v2.git
-- cd portfolio-v2
+cd portfolio-v2
 ```
 
 ### 2. Install dependencies
