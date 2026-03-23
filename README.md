@@ -72,14 +72,15 @@ It integrates live repository data and structured documentation to create a **dy
 This project follows a **monorepo structure**:
 
 
-portfolio-v2/
-│
-├── apps/
-│ ├── web/ # Next.js Portfolio Application
-│ └── docs/ # Documentation (Docusaurus)
-│
-├── packages/ # (optional future shared packages)
-├── README.md
+```mermaid
+flowchart TB
+    portfolio-v2
+    portfolio-v2 --> apps
+    apps --> web
+    apps --> docs
+    portfolio-v2 --> packages
+    portfolio-v2 --> README.md
+```
 
 
 ---
