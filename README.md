@@ -131,13 +131,13 @@ npm install
 ## Web App
 ```bash
 cd apps/web
-- npm run dev
+npm run dev
 ```
 
 ## Docs
 ```bash
-- cd apps/docs
-- npm run start
+cd apps/docs
+npm run start
 ```
 
 ## 🔐 Environment Variables
