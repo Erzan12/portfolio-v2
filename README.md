@@ -172,6 +172,8 @@ GITHUB_TOKEN=your_github_token_here
 v0.7.0 – Documentation & UI Interaction Update
 v0.8.0 – Dynamic Projects & GitHub Integration
 v1.0.0 – Public Portfolio Platform Release 🎉
+v1.0.1 - Patch bug fixes and typo errors (Upcoming)
+v1.5.0 - Minor update in the blog page in Portfolio to make CMS to easily control and manage my data (Upcoming)
 ```
 
 ### 📄 License
