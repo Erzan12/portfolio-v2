@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +21,11 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
+  // Initialize the Autoplay plugin
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
   React.useEffect(() => {
     if (!api) return;
     setCount(api.scrollSnapList().length);
@@ -34,11 +40,17 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     <div className="w-full px-4 py-12">
       <Carousel
         setApi={setApi}
-        opts={{ align: "start", loop: true }}
+        // Attach the plugin here
+        plugins={[plugin.current]} 
+        // Manual Hover logic for pausing
+        // onMouseEnter={plugin.current.stop}
+        // onMouseLeave={plugin.current.reset}
+        opts={{ 
+          align: "start", 
+          loop: true 
+        }}
         className="w-full max-w-6xl mx-auto"
       >
-        {/* --- ALL CAROUSEL COMPONENTS MUST BE INSIDE THIS TAG --- */}
-        
         <CarouselContent className="-ml-4">
           {projects.map((project, index) => (
             <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
@@ -75,7 +87,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                     </a>
                   </Button>
                   <Button size="sm" className="flex-1 rounded-full gap-2">
-                    <ExternalLink className="w-4 h-4" /> Demo
+                    <ExternalLink href={`https://github.com/${project.github}`}className="w-4 h-4" /> Demo
                   </Button>
                 </CardFooter>
               </Card>
@@ -83,25 +95,34 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           ))}
         </CarouselContent>
 
-        {/* 1. Desktop Arrows (Floating on sides) */}
+        {/* Desktop Arrows (Floating on sides) */}
         <div className="hidden md:block">
           <CarouselPrevious className="-left-12" />
           <CarouselNext className="-right-12" />
         </div>
 
-        {/* 2. Mobile Controls & Dots (Placed below content but INSIDE Carousel) */}
+        {/* Mobile Controls & Dots (Placed below content but INSIDE Carousel) */}
         <div className="flex flex-col items-center gap-6 mt-10">
-          
-          {/* Pagination Dots */}
+
+          {/* REUSED PAGINATION AS PROGRESS BAR */}
           <div className="flex gap-2.5">
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  current === i + 1 ? "w-8 bg-primary" : "w-2 bg-primary/20"
-                }`}
-              />
+                className="relative h-2 bg-primary/20 rounded-full overflow-hidden transition-all duration-300"
+                style={{ width: current === i ? "40px" : "8px" }}
+              >
+                {/* The Progress Fill */}
+                {current === i && (
+                  <div 
+                    className="absolute inset-0 bg-primary origin-left"
+                    style={{
+                      animation: `progress-loop 4000ms linear forwards`
+                    }}
+                  />
+                )}
+              </button>
             ))}
           </div>
 
@@ -125,9 +146,13 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             </Button>
           </div>
         </div>
-
-        {/* --- END OF CONTEXT BUBBLE --- */}
       </Carousel>
+      <style jsx global>{`
+        @keyframes progress-loop {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+      `}</style>
     </div>
   );
 }
