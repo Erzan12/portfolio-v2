@@ -108,22 +108,22 @@ export default function Hero() {
               <Card className="p-8 md:p-12 bg-olive-about-card/70 dark:bg-olive-dark-about-card border-border rounded-3xl relative overflow-hidden shadow-none">
                 {/* background icons */}
                 <div className="absolute top-[5%] right-[10%] opacity-10">
-                  <GitBranch size={110} className="text-primary rotate-[18deg]" />
+                  <GitBranch className="w-16 h-16 md:w-[110px] md:h-[110px] text-primary rotate-[18deg]" />
                 </div>
                 <div className="absolute top-[30%] left-[9%] opacity-10">
                   <Wrench size={90} className="text-primary -rotate-[95deg]" />
                 </div>
                 <div className="absolute bottom-[35%] left-[60%] opacity-10">
-                  <Hammer size={80} className="text-primary rotate-[160deg]" />
+                  <Hammer className="w-14 h-14 md:w-[80px] md:h-[80px] text-primary rotate-[160deg]" />
                 </div>
                 <div className="absolute top-[60%] right-[15%] opacity-10">
-                  <Cpu size={120} className="text-primary -rotate-[8deg]" />
+                  <Cpu className="w-20 h-20 md:w-[120px] md:h-[120px] text-primary -rotate-[8deg]" />
                 </div>
                 <div className="absolute bottom-[10%] left-[25%] opacity-10">
                   <Rocket size={80} className="text-primary -rotate-[8deg]" />
                 </div>
                 <div className="absolute top-[6%] left-[30%] opacity-10">
-                  <Server size={80} className="text-primary -rotate-[8deg]" />
+                  <Server className="w-12 h-12 md:w-[80px] md:h-[80px] text-primary -rotate-[8deg]" />
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
