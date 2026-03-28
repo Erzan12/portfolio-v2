@@ -199,11 +199,15 @@ flowchart TD
     E --> F[Deploy to Server / Kubernetes]
 ```
 
+---
+
 ### 🧩 Migration Strategy in the future
 
 - Abstract service layer
 - Replace ORM without breaking API:
   - Prisma → Drizzle / Supabase
+
+---
 
 ### 🧱 Monorepo Architecture (Turborepo)
 
@@ -231,6 +235,8 @@ flowchart TD
     C --> F
 ```
 
+---
+
 ## 📁 Suggested Structure
 
 ```bash
@@ -243,6 +249,8 @@ packages/
   types/      # shared types/interfaces
   config/     # eslint, tsconfig, etc.
 ```
+
+---
 
 ## 🔁 System-Wide Data Flow
 
@@ -261,6 +269,8 @@ sequenceDiagram
     Frontend-->>User: Render UI
 ```
 
+---
+
 ## 🆚 Shopify vs Custom System
 
 | Feature         | Shopify Template     | Custom System   |
@@ -271,15 +281,26 @@ sequenceDiagram
 | Auth            | External             | Internal        |
 | Multi-tenancy   | Built-in             | Custom          |
 
+---
+
 ## 🧠 Design Principles
 - Decoupled Architecture
 - Interface Stability
 - Scalability-first mindset
 - ORM abstraction
 
-🚀 Future Enhancements
+---
+
+## 🚀 Future Enhancements
 - Role-based access control
 - Order management system
 - Analytics dashboard
 - Redis caching
 - Event-driven architecture (webhooks)
+### 🛍️ Missing marketplace-level features (future)
+Not required now, but needed in future:
+- Order per store split (important for multi-vendor)
+- Payment table
+- Shipping info
+
+---
