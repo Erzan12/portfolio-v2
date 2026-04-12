@@ -1,86 +1,66 @@
-import { prisma } from "@/lib/prisma/prisma";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
+import { prisma } from "@/lib/prisma/prisma"
+import { notFound } from "next/navigation"
+import { TableOfContents } from "@/components/blog-cms/table-of-contents"
+import { RecentPostsSidebar } from "@/components/blog-cms/recent-posts-sidebar"
+import Image from "next/image"
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await prisma.post.findUnique({
     where: { slug: params.slug },
-    include: {
-      author: true,
-      tags: true,
-    },
-  });
+    include: { author: true }
+  })
 
-  const recentPosts = await prisma.post.findMany({
-    take: 5,
-    orderBy: { createdAt: "desc" },
-    select: { title: true, slug: true, createdAt: true },
-  });
-
-  if (!post) return notFound();
+  if (!post) notFound()
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 lg:grid lg:grid-cols-12 lg:gap-12">
-      {/* --- Sticky Sidebar --- */}
-      <aside className="hidden lg:block lg:col-span-3">
-        <div className="sticky top-24 space-y-8">
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4">
-              Recent Posts
-            </h3>
-            <ul className="space-y-3">
-              {recentPosts.map((rp) => (
-                <li key={rp.slug}>
-                  <Link 
-                    href={`/blog/${rp.slug}`}
-                    className="text-sm hover:text-primary transition-colors line-clamp-2"
-                  >
-                    {rp.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </aside>
-
-      {/* --- Main Content Area --- */}
-      <main className="lg:col-span-9">
-        <header className="mb-8 border-b pb-8 border-border">
-          <h1 className="text-4xl font-extrabold mb-6 text-foreground">
-            {post.title}
-          </h1>
+    <main className="min-h-screen pt-32 pb-20 bg-background">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          <div className="flex items-center gap-3">
-            {post.author.image && (
-              <Image 
-                src={post.author.image} 
-                alt={post.author.name || "Author"} 
-                width={40} 
-                height={40} 
-                className="rounded-full border border-border"
-              />
-            )}
-            <div>
-              <p className="text-sm font-medium">{post.author.name}</p>
-              <p className="text-xs text-muted-foreground">
-                {new Date(post.createdAt).toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric"
-                })}
-              </p>
+          {/* --- LEFT SIDEBAR (Recent Posts) --- */}
+          <aside className="hidden lg:block lg:col-span-3">
+            <div className="sticky top-32">
+               <RecentPostsSidebar currentSlug={post.slug} />
             </div>
-          </div>
-        </header>
+          </aside>
 
-        {/* --- Rendered Content --- */}
-        <article 
-          className="prose dark:prose-invert prose-orange max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }} 
-        />
-      </main>
-    </div>
-  );
+          {/* --- CENTER CONTENT --- */}
+          <article className="lg:col-span-6">
+            <header className="mb-10">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                {post.title}
+              </h1>
+              <div className="flex items-center gap-4 text-muted-foreground border-b border-border pb-8">
+                <Image 
+                   src="/github-avatar.png" // Query this from your User table image field
+                   alt={post.author.name || "Author"} 
+                   width={40} height={40} 
+                   className="rounded-full ring-2 ring-primary/20" 
+                />
+                <div className="text-sm">
+                  <p className="font-bold text-foreground">{post.author.name}</p>
+                  <p>{new Date(post.createdAt).toLocaleDateString()} · 5 min read</p>
+                </div>
+              </div>
+            </header>
+
+            {/* The Prose layer with your Olive accents */}
+            <div 
+              className="prose dark:prose-invert prose-olive max-w-none 
+                         prose-headings:font-bold prose-a:text-primary"
+              dangerouslySetInnerHTML={{ __html: post.content }} 
+            />
+          </article>
+
+          {/* --- RIGHT SIDEBAR (Table of Contents) --- */}
+          <aside className="hidden xl:block xl:col-span-3">
+            <div className="sticky top-32 border-l border-border pl-6">
+              <TableOfContents content={post.content} />
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </main>
+  )
 }
