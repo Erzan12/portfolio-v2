@@ -11,6 +11,11 @@ datasource db {
   provider = "postgresql"
 }
 
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -28,6 +33,7 @@ model Post {
   content         String   @db.Text // Stores MDX or HTML
   published       Boolean  @default(false)
   coverImage      String?
+  status          PostStatus @default(DRAFT)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   
