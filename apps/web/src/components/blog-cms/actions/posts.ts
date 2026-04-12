@@ -39,4 +39,6 @@ export async function createPost(formData: FormData) {
   });
 
   revalidatePath("/blog");
+
+  return { success: true, slug: finalSlug };
 }

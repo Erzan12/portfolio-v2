@@ -1,8 +1,11 @@
+"use client"
+
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
 export default function Editor({ onChange }: { onChange: (html: string) => void }) {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [StarterKit],
     content: '<p>Start writing your dev log...</p>',
     onUpdate: ({ editor }) => {
