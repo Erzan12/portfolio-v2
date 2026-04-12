@@ -8,7 +8,7 @@ function getShikiHighlighter() {
   if (!highlighterPromise) {
     // getHighlighter -> createHighlighter
     highlighterPromise = createHighlighter({
-      themes: ["one-dark-pro"], // Note: 'themes' (plural)
+      themes: ["one-dark-pro"], // Note: 'themes' (plural) or "tokyo-night"
       langs: ["typescript", "javascript", "tsx", "php", "sql"],
     });
   }
