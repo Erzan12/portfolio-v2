@@ -94,8 +94,8 @@ export default function ProjectCard({ title, description, stack, repo, github }:
         View Repository
         {currentRepo && (
           <>
-            <span>⭐ {currentRepo.stars}</span>
-            <span>🍴 {currentRepo.forks}</span>
+            <span>⭐ {currentRepo.stargazers_count}</span>
+            <span>🍴 {currentRepo.forks_count}</span>
           </>
         )}
       </a>

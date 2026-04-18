@@ -9,12 +9,14 @@ import Editor from "@/components/blog-cms/editor"; // We will build this next
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
+type PostStatus = "DRAFT" | "PUBLISHED";
+
 export default function NewPostPage() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt ] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<"DRAFT" | "PUBLISHED">("DRAFT");
+  const [status, setStatus] = useState<PostStatus>("DRAFT");
 
   const router = useRouter();
 
@@ -41,7 +43,7 @@ export default function NewPostPage() {
         });
         router.push(`/blog/${result.slug}`);
       }
-    } catch (err) {
+    } catch {
       toast({
         title: "Error",
         description: "Protocol Failure: Could not save post",
@@ -74,7 +76,7 @@ export default function NewPostPage() {
         <p className="text-sm font-medium">Post Visibility:</p>
         <select 
           value={status} 
-          onChange={(e) => setStatus(e.target.value as any)}
+          onChange={(e) => setStatus(e.target.value as PostStatus)}
           className="bg-transparent border-none text-primary font-bold focus:ring-0"
         >
           <option value="DRAFT">Draft (Hidden)</option>

@@ -1,4 +1,3 @@
-// components/blog/recent-posts-sidebar.tsx
 import { prisma } from "@/lib/prisma/prisma";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";

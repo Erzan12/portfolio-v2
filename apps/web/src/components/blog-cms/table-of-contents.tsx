@@ -1,27 +1,28 @@
-// components/blog/table-of-contents.tsx (Enhanced)
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { cn } from "@/lib/utils"
 
 export function TableOfContents({ content }: { content: string }) {
-  const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([])
+  // const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([])
+  const headings = useMemo(() => {
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(content, "text/html")
+    const elements = Array.from(doc.querySelectorAll("h2, h3"))
+
+    return elements.map((el, index) => {
+      const text = el.textContent || ""
+      const id = text.toLowerCase().replace(/\s+/g, "-") + `-${index}`
+      return {
+        id,
+        text,
+        level: parseInt(el.tagName.replace("H", "")),
+      }
+    })
+  }, [content])
   const [activeId, setActiveId] = useState<string>("")
 
   useEffect(() => {
-    const parser = new DOMParser()
-    const doc = parser.parseFromString(content, 'text/html')
-    const elements = Array.from(doc.querySelectorAll('h2, h3'))
-    
-    const extractedHeadings = elements.map((el, index) => {
-      const text = el.textContent || ""
-      const id = text.toLowerCase().replace(/\s+/g, '-') + `-${index}`
-      return { id, text, level: parseInt(el.tagName.replace('H', '')) }
-    })
-    
-    setHeadings(extractedHeadings)
-
-    // --- Intersection Observer Logic ---
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -30,11 +31,10 @@ export function TableOfContents({ content }: { content: string }) {
           }
         })
       },
-      { rootMargin: "0% 0% -80% 0%" } // Trigger when heading is near top of viewport
+      { rootMargin: "0% 0% -80% 0%" }
     )
 
-    // We need to wait for the content to be rendered in the DOM
-    const contentHeadings = document.querySelectorAll('article h2, article h3')
+    const contentHeadings = document.querySelectorAll("article h2, article h3")
     contentHeadings.forEach((h) => observer.observe(h))
 
     return () => observer.disconnect()

@@ -2,9 +2,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
-import { getReadingTime } from "@/lib/helper/get-reading-time.helper";
+import { getReadingTime } from "@/lib/helper/get-reading-time.helper"; 
+import { Post } from "@/lib/types/posts";
 
-export function BlogListAnimation({ posts }: { posts: any[] }) {
+export function BlogListAnimation({ posts }: { posts: Post[] }) {
   return (
     <>
       {posts.map((post, i) => (

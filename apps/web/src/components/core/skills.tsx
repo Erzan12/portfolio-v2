@@ -1,48 +1,48 @@
 "use client";
 
-import { Variants } from "framer-motion";
+// import { Variants } from "framer-motion";
 import { Server, Layout, Database, Terminal, } from "lucide-react";
-import { 
-  SiReact, SiNextdotjs, SiTypescript, SiNestjs, SiPrisma, 
-  SiPostgresql, SiDocker, SiTailwindcss, SiPhp, SiLaravel, 
-  SiCodeigniter, SiNodedotjs, SiExpress, SiGit, SiFramer 
-} from "react-icons/si";
+// import { 
+//   SiReact, SiNextdotjs, SiTypescript, SiNestjs, SiPrisma, 
+//   SiPostgresql, SiDocker, SiTailwindcss, SiPhp, SiLaravel, 
+//   SiCodeigniter, SiNodedotjs, SiExpress, SiGit, SiFramer 
+// } from "react-icons/si";
 import { ReactNode } from "react";
 import SkillCard from "./skills/skill-card";
 
-const item: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: "easeOut"
-    } 
-  },
-};
+// const item: Variants = {
+//   hidden: { 
+//     opacity: 0, 
+//     y: 20 
+//   },
+//   visible: { 
+//     opacity: 1, 
+//     y: 0, 
+//     transition: { 
+//       duration: 0.5, 
+//       ease: "easeOut"
+//     } 
+//   },
+// };
 
-const techIcons: Record<string, { icon: ReactNode, color: string }> = {
-  "React": { icon: <SiReact />, color: "#61DAFB" },
-  "Next.js": { icon: <SiNextdotjs />, color: "#000000" },
-  "NextJS": { icon: <SiNextdotjs />, color: "#000000" },
-  "TypeScript": { icon: <SiTypescript />, color: "#3178C6" },
-  "NestJS": { icon: <SiNestjs />, color: "#E0234E" },
-  "Prisma": { icon: <SiPrisma />, color: "#2D3748" },
-  "PostgreSQL": { icon: <SiPostgresql />, color: "#4169E1" },
-  "Docker": { icon: <SiDocker />, color: "#2496ED" },
-  "Tailwind CSS": { icon: <SiTailwindcss />, color: "#06B6D4" },
-  "PHP": { icon: <SiPhp />, color: "#777BB4" },
-  "Laravel": { icon: <SiLaravel />, color: "#FF2D20" },
-  "CodeIgniter": { icon: <SiCodeigniter />, color: "#EE4323" },
-  "Node.js": { icon: <SiNodedotjs />, color: "#339933" },
-  "Express": { icon: <SiExpress />, color: "#000000" },
-  "Git": { icon: <SiGit />, color: "#F05032" },
-  "Framer Motion": { icon: <SiFramer />, color: "#0055FF" },
-};
+// const techIcons: Record<string, { icon: ReactNode, color: string }> = {
+//   "React": { icon: <SiReact />, color: "#61DAFB" },
+//   "Next.js": { icon: <SiNextdotjs />, color: "#000000" },
+//   "NextJS": { icon: <SiNextdotjs />, color: "#000000" },
+//   "TypeScript": { icon: <SiTypescript />, color: "#3178C6" },
+//   "NestJS": { icon: <SiNestjs />, color: "#E0234E" },
+//   "Prisma": { icon: <SiPrisma />, color: "#2D3748" },
+//   "PostgreSQL": { icon: <SiPostgresql />, color: "#4169E1" },
+//   "Docker": { icon: <SiDocker />, color: "#2496ED" },
+//   "Tailwind CSS": { icon: <SiTailwindcss />, color: "#06B6D4" },
+//   "PHP": { icon: <SiPhp />, color: "#777BB4" },
+//   "Laravel": { icon: <SiLaravel />, color: "#FF2D20" },
+//   "CodeIgniter": { icon: <SiCodeigniter />, color: "#EE4323" },
+//   "Node.js": { icon: <SiNodedotjs />, color: "#339933" },
+//   "Express": { icon: <SiExpress />, color: "#000000" },
+//   "Git": { icon: <SiGit />, color: "#F05032" },
+//   "Framer Motion": { icon: <SiFramer />, color: "#0055FF" },
+// };
 
 const skillData = [
   {

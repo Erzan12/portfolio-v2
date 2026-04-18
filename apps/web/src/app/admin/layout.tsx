@@ -5,7 +5,6 @@ import { redirect } from "next/navigation"
 const ADMIN_EMAIL = "do.earljan@gmail.com"
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession();
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 

@@ -1,3 +1,4 @@
+import { GitHubRepo } from "@/lib/types/github-repo";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -21,8 +22,8 @@ export async function GET() {
     
     //to not include fork repos
     const repos = data
-       .filter((repo: any) => !repo.fork)
-       .map((repo: any) => ({
+       .filter((repo: GitHubRepo) => !repo.fork)
+       .map((repo: GitHubRepo) => ({
         id: repo.id,
         name: repo.name,
         description: repo.description,

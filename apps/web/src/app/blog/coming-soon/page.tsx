@@ -66,7 +66,7 @@ export default function BlogComingSoon() {
                   </h1>
                   
                   <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-8">
-                    I'm currently architecting a space to share my thoughts on NestJS, NextJS, React, Javascript, 
+                    I&apos;m currently architecting a space to share my thoughts on NestJS, NextJS, React, Javascript, 
                     CI/CD Workflows, and the lessons learned building scalable systems in the Philippines.
                   </p>
 

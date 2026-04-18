@@ -6,15 +6,22 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiNestjs, SiPrisma, 
   SiPostgresql, SiDocker, SiTailwindcss, SiPhp, SiLaravel, 
   SiCodeigniter, SiNodedotjs, SiExpress, SiLinux, SiGit, 
-  SiVercel, SiMysql, SiRedis, SiFramer, SiTestinglibrary 
+  SiVercel, SiMysql, SiRedis, SiFramer, 
 } from "react-icons/si";
+
+type Skills = {
+  category: string;
+  icon: ReactNode;
+  description: string;
+  items: string[];
+}
 
 export default function SkillCard({ 
   skill, 
   index, 
   className 
 }: { 
-  skill: any; 
+  skill: Skills; 
   index: number; 
   className?: string 
 }) {
@@ -91,7 +98,7 @@ export default function SkillCard({
 
           {/* grid for icons changed to flex-wrap to better handle various card widths */}
           <div className="flex flex-wrap gap-4 mt-auto">
-            {skill.items.map((tech: string, i: number) => (
+            {skill.items.map((tech: string) => (
               <motion.div
                 key={tech}
                 className="flex items-center gap-2 group/icon"

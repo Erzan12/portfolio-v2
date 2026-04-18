@@ -62,7 +62,6 @@ export default function Hero() {
     const tagMatch = "[Erzan]";
     const roleMatch = "Fullstack Developer";
 
-    let remaining = text;
     let cursor = 0;
 
     const fullSegments = [

@@ -1,11 +1,10 @@
 import { prisma } from "@/lib/prisma/prisma";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Tag } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlogListAnimation } from "@/components/blog-cms/blog-animations"; // We'll move the motion logic here
-import { getReadingTime } from "@/lib/helper/get-reading-time.helper";
 
 export default async function BlogPage() {
   const posts = await prisma.post.findMany({

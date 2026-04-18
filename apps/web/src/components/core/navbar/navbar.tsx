@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Github, BookOpen } from "lucide-react";
 import { NavLink } from "@/components/core/navbar/nav-link";

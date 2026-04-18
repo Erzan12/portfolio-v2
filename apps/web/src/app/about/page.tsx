@@ -68,18 +68,18 @@ export default function About() {
                 </div>
                 <p className="text-card-foreground leading-relaxed font-sans flex-1 text-sm space-y-4">
                   <span className="block mb-3">
-                    I'm Earl Jan Do, a passionate web developer from the Philippines with over 4 years of experience
+                    I&apos;m Earl Jan Do, a passionate web developer from the Philippines with over 4 years of experience
                     building scalable web applications, systems, and API solutions. I specialize in both backend and frontend development,
                     focusing on creating efficient, maintainable, and user-friendly applications.
                   </span>
                   <span className="block mb-3">
                     I approach development with a strong emphasis on scalability, performance, and clean architecture. I constantly ask:
                     Is this solution scalable? Can it be improved? How can it be optimized? This mindset has evolved throughout my journey
-                    from building what's trendy to focusing on what truly works and lasts.
+                    from building what&apos;s trendy to focusing on what truly works and lasts.
                   </span>
                   <span className="block mb-3">
                     Through collaboration with other developers, It teaches me a lot I always value opinions and feedbacks from others and
-                    I've learned the value of going deep into a technology and mastering it. I believe that depth creates long-term growth
+                    I&apos;ve learned the value of going deep into a technology and mastering it. I believe that depth creates long-term growth
                     and opens opportunities for innovation.
                   </span>
                   <span className="block">
