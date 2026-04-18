@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma/prisma";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils"; // Utility for tailwind classes
-import { Prisma } from "@prisma/client";
+import type { Prisma } from "@prisma/client";
 
 interface RecentPostsSidebarProps {
   currentSlug?: string;
