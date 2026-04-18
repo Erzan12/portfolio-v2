@@ -1,126 +1,112 @@
-"use client"
+import { prisma } from "@/lib/prisma/prisma";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tag } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { BlogListAnimation } from "@/components/blog-cms/blog-animations"; // We'll move the motion logic here
 
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { motion, Variants } from "framer-motion"
-import { 
-  Hammer, 
-  Newspaper, 
-  ArrowLeft, 
-  Send, 
-  Clock, 
-  Wrench,
-  Sparkles
-} from "lucide-react"
-import Link from "next/link"
+export default async function BlogPage() {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    orderBy: { createdAt: "desc" },
+    include: { author: true, tags: true },
+  });
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-}
+  const featuredPost = posts[0];
+  const regularPosts = posts.slice(1);
 
-const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-}
-
-export default function BlogComingSoon() {
   return (
-    <main>
-      <div className="min-h-screen pt-20 pb-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen pt-32 pb-20 bg-background">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section: Minimalist & Clean */}
+        <div className="max-w-3xl mb-16">
+          <h1 className="text-5xl font-bold tracking-tight mb-4">
+            Mission <span className="text-primary italic">Log</span>
+          </h1>
+          <p className="text-lg text-muted-foreground font-medium border-l-2 border-primary/30 pl-6 py-1">
+            Documentation of my journey through NestJS architecture, Next.js performance, 
+            and the nuances of full-stack engineering.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          {/* back button */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
-            <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-sans text-sm group">
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Home
-            </Link>
-          </motion.div>
-
-          <motion.div 
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {/* blog hero card */}
-            <motion.div variants={item} className="md:col-span-3">
-              <Card className="p-8 md:p-12 bg-olive-about-card/70 dark:bg-olive-dark-about-card border-border rounded-3xl relative overflow-hidden shadow-none">
-                <div className="absolute top-0 right-0 p-8 opacity-10">
-                  <Newspaper size={120} className="text-primary rotate-12" />
-                </div>
-                
-                <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
-                  <Badge variant="secondary" className="mb-6 px-4 py-1 rounded-full font-sans bg-primary/10 text-primary border-primary/20">
-                    <Clock className="w-3 h-3 mr-2 animate-spin-slow" />
-                    Coming Soon
-                  </Badge>
-                  
-                  <h1 className="text-4xl md:text-6xl font-bold font-sans tracking-tight mb-6">
-                    Deep Dives & <span className="text-primary">Dev Log</span>
-                  </h1>
-                  
-                  <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-8">
-                    I'm currently architecting a space to share my thoughts on NestJS, NextJS, React, Javascript, 
-                    CI/CD Workflows, and the lessons learned building scalable systems in the Philippines.
-                  </p>
-
-                  <div className="w-full max-w-md flex flex-col sm:flex-row gap-2">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
-                      className="flex-1 px-4 py-2 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 font-sans"
+          {/* --- MAIN FEED (8 columns) --- */}
+          <div className="lg:col-span-8 space-y-12">
+            
+            {/* Featured Post: Big, Bold, and Interactive */}
+            {featuredPost && (
+              <Link href={`/blog/${featuredPost.slug}`} className="group block">
+                <Card className="relative overflow-hidden p-0 border-none bg-transparent shadow-none">
+                  <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+                    <Image 
+                      src={featuredPost.coverImage || "/placeholder-dev.png"} 
+                      alt={featuredPost.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <Button className="rounded-xl px-6 gap-2 w-full sm:w-auto">
-                      Notify Me
-                      <Send className="w-4 h-4" />
-                    </Button>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 text-xs font-mono text-primary uppercase tracking-widest">
+                      <Badge className="bg-primary/10 text-primary border-primary/20">Featured Entry</Badge>
+                      <span>{new Date(featuredPost.createdAt).toLocaleDateString()}</span>
+                    </div>
+                    <h2 className="text-4xl font-bold group-hover:text-primary transition-colors leading-tight">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="text-muted-foreground text-lg line-clamp-2 max-w-2xl">
+                      {featuredPost.excerpt}
+                    </p>
+                  </div>
+                </Card>
+              </Link>
+            )}
+
+            {/* Regular Post Feed: The "Mission Log" View */}
+            <div className="space-y-8 pt-12 border-t border-border/50">
+              <BlogListAnimation posts={regularPosts} />
+            </div>
+          </div>
+
+          {/* --- SIDEBAR (4 columns) --- */}
+          <aside className="lg:col-span-4 space-y-10">
+            <div className="sticky top-32 space-y-10">
+              
+              {/* Category Explorer */}
+              <section className="bg-olive-about-card/30 dark:bg-olive-dark-about-card/40 p-8 rounded-3xl border border-border/50">
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <Tag className="w-4 h-4 text-primary" /> Systems Explorer
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {["Next.js", "NestJS", "PostgreSQL", "Supabase", "Architecture"].map(tag => (
+                    <button key={tag} className="px-4 py-2 text-sm rounded-full bg-background border border-border hover:border-primary/50 hover:text-primary transition-all">
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              </section>
+
+              {/* Quick Connect / About Me Mini-Widget */}
+              <section className="p-8 rounded-3xl border border-dashed border-primary/30">
+                <div className="flex items-center gap-4 mb-4">
+                  <Image src="/avatar.png" width={48} height={48} className="rounded-full grayscale hover:grayscale-0 transition-all" alt="Earl" />
+                  <div>
+                    <h4 className="font-bold">Earl Jan Do</h4>
+                    <p className="text-xs text-muted-foreground">Full-Stack System Architect</p>
                   </div>
                 </div>
-              </Card>
-            </motion.div>
-
-            {/* progress card */}
-            <motion.div variants={item}>
-              <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Hammer className="text-primary w-6 h-6" />
-                </div>
-                <h3 className="font-bold font-sans mb-1">Status</h3>
-                <p className="text-sm text-muted-foreground font-sans">Drafting first articles & setting up the MDX engine & figuring out which blog I will use since I have blogs in my Personal Docs in Docusaurus.</p>
-              </Card>
-            </motion.div>
-
-            {/* feature card */}
-            <motion.div variants={item}>
-              <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Sparkles className="text-blue-500 w-6 h-6" />
-                </div>
-                <h3 className="font-bold font-sans mb-1">What to expect</h3>
-                <p className="text-sm text-muted-foreground font-sans">Prisma ORMs, NestJS patterns, Typescript and Javascript valuable insights.</p>
-              </Card>
-            </motion.div>
-
-            {/* tech stack card */}
-            <motion.div variants={item}>
-              <Card className="p-6 bg-olive-about-card/40 dark:bg-olive-dark-about-card/50 border-border rounded-2xl h-full shadow-none flex flex-col justify-center items-center text-center group">
-                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Wrench className="text-orange-500 w-6 h-6" />
-                </div>
-                <h3 className="font-bold font-sans mb-1">Stack</h3>
-                <p className="text-sm text-muted-foreground font-sans">Built with Next.js and Framer Motion with lucide-react icons, tailwindcss and shadcn themes.</p>
-              </Card>
-            </motion.div>
-          </motion.div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Building high-performance applications in the Philippines. Currently scaling 
+                  ShopStack and maintaining vessel maintenance systems.
+                </p>
+              </section>
+            </div>
+          </aside>
         </div>
       </div>
     </main>
-    
-  )
+  );
 }

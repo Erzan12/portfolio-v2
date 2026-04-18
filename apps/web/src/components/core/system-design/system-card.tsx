@@ -40,7 +40,7 @@ export default function SystemCard({
   title,
   description,
   stack,
-  topics,
+  // topics,
   language,
   stars,
   forks,

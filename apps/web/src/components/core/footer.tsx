@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,18 +19,18 @@ export default function Footer() {
 
         {/* Quick links */}
         <div className="flex flex-wrap justify-center gap-6">
-          <a href="https://github.com/Erzan12" className="hover:text-primary flex items-center gap-1">
+          <ExternalLink href="https://github.com/Erzan12" className="hover:text-primary flex items-center gap-1">
             <Github size={16} /> GitHub
-          </a>
-          <a href="https://erzan-docs.vercel.app" className="hover:text-primary" target="_blank">
+          </ExternalLink>
+          <ExternalLink href="https://erzan-docs.vercel.app" className="hover:text-primary" target="_blank">
             Docs
-          </a>
-          <a href="/blog" className="hover:text-primary" target="_black">
+          </ExternalLink>
+          <Link href={`/blog`} className="hover:text-primary" target="_black">
             Blog
-          </a>
-          <a href="/about" className="hover:text-primary">
+          </Link>
+          <Link href={`/about`} className="hover:text-primary">
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Social icons */}

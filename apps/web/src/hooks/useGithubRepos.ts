@@ -1,9 +1,10 @@
 "use client";
 
+import { GitHubRepo } from "@/lib/types/github-repo";
 import { useEffect, useState } from "react";
 
 export function useGithubRepos() {
-    const [repos, setRepos] = useState<any[]>([]);
+    const [repos, setRepos] = useState<GitHubRepo[]>([]);
     const [loading, setLoading] = useState(true); //true
 
     useEffect(() => {

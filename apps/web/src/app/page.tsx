@@ -2,17 +2,14 @@
 
 import Hero from "@/components/core/hero";
 import Skills from "@/components/core/skills";
-import { useGithubRepos } from "@/hooks/useGithubRepos";
 import { projects } from "@/data/projects";
 import ProjectsCarousel from "@/components/core/projects/projects-carousel";
 import HowIThink from "@/components/core/how-i-think";
 import CaseStudy from "@/components/core/project-case";
-import CurrentlyLearning from "@/components/core/current-learning";
 import Lab from "@/components/core/experimental-lab";
 import Tabs from "@/components/core/tabs";
 
 export default function Home() {
-  const repos = useGithubRepos();
   return (
     <main className="container mx-auto px-6 overflow-x-hidden">
       <Hero />
@@ -23,7 +20,6 @@ export default function Home() {
           <div className="h-1 w-20 bg-primary rounded-full" />
           <ProjectsCarousel
             projects={projects.filter((p) => p.featured)}
-            // repos={repos}
           />
         </div>
       </section>
