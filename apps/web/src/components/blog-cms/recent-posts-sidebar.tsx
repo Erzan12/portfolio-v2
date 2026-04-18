@@ -2,13 +2,18 @@ import { prisma } from "@/lib/prisma/prisma";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils"; // Utility for tailwind classes
-import { Post } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 interface RecentPostsSidebarProps {
   currentSlug?: string;
 }
 
-type PostPreview = Pick<Post, "title" | "slug">;
+type PostPreview = Prisma.PostGetPayload<{
+  select: {
+    title: true;
+    slug: true;
+  };
+}>;
 
 export async function RecentPostsSidebar({ currentSlug }: RecentPostsSidebarProps) {
   const posts: PostPreview[] = await prisma.post.findMany({
