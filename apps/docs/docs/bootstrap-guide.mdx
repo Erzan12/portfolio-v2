@@ -1,0 +1,242 @@
+---
+id: bootstrap-guide
+title: ⭐ Bootstrap Guide (Quick Reference)
+description: Practical guide for using Bootstrap in real projects
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Bootstrap Guide
+
+This is a practical cheat sheet for using **Bootstrap** effectively in real projects—focused on when to use components, how to use them, and best practices.
+
+---
+
+# 🎯 What is Bootstrap?
+
+Bootstrap is a CSS framework that provides:
+- Prebuilt UI components (buttons, cards, navbars)
+- Utility classes (spacing, colors, layout)
+- Responsive grid system
+
+It helps you build interfaces faster without writing everything from scratch.
+
+---
+
+# 🧠 When to Use Bootstrap
+
+Use Bootstrap when:
+- You want fast UI development
+- You need responsive design
+- You don’t want to write custom CSS for everything
+
+Avoid overusing Bootstrap when:
+- You need highly custom animations
+- You want a fully unique design system
+
+---
+
+# 📦 Core Concepts
+
+## 1. Container System
+
+```html
+<div class="container">
+    Content here
+</div>
+
+### Variants:
+- container → fixed width
+- container-fluid → full width
+
+---
+
+## 2. Grid System
+Bootstrap uses a 12-column layout.
+```bash
+<div class="row">
+    <div class="col-md-6">Left</div>
+    <div class="col-md-6">Right</div>
+</div>
+```
+Breakpoints:
+- col-sm-* → small devices
+- col-md-* → tablets
+- col-lg-* → desktops
+
+---
+
+# 🎨 Buttons (VERY IMPORTANT)
+Basic Syntax
+```bash
+<button class="btn btn-primary">Click Me</button>
+```
+
+---
+
+### Button Types (When to Use)
+
+| Class           | Color      | Use Case                   |
+| --------------- | ---------- | -------------------------- |
+| `btn-primary`   | Blue       | Main action (Save, Submit) |
+| `btn-secondary` | Gray       | Secondary action           |
+| `btn-success`   | Green      | Confirm, Approve           |
+| `btn-danger`    | Red        | Delete, Remove             |
+| `btn-warning`   | Yellow     | Edit, Warning              |
+| `btn-info`      | Light Blue | Info, View                 |
+| `btn-light`     | White      | Neutral UI                 |
+| `btn-dark`      | Black      | Strong contrast            |
+
+---
+
+### Examples
+#### Primary Action
+```bash
+<button class="btn btn-primary">
+    Save Changes
+</button>
+```
+
+#### Delete Action
+```bash
+<button class="btn btn-danger">
+    Delete
+</button>
+```
+
+#### Edit Action
+```bash
+<button class="btn btn-warning">
+    Edit
+</button>
+```
+
+---
+
+### Button Sizes
+```bash
+btn-lg   → large
+btn-sm   → small
+
+Example:
+```bash
+<button class="btn btn-primary btn-sm">Small Button</button>
+```
+
+---
+
+# 🎨 Colors (Utilities)
+Bootstrap includes color utility classes:
+
+### Text Colors
+```bash
+text-primary
+text-success
+text-danger
+text-warning
+text-info
+text-muted
+```
+
+### Background Colors
+```bash
+bg-primary
+bg-success
+bg-danger
+bg-warning
+bg-info
+bg-light
+bg-dark
+```
+
+---
+
+### Example
+```bash
+<div class="bg-primary text-white p-3">
+    Important Section
+</div>
+```
+
+---
+
+# 📐 Spacing System
+Bootstrap uses a spacing scale:
+
+Format:
+```bash
+m = margin
+p = padding
+t = top
+b = bottom
+s = start (left)
+e = end (right)
+x = left/right
+y = top/bottom
+```
+
+### Examples
+mt-3   → margin-top
+mb-4   → margin-bottom
+px-5   → padding left/right
+py-3   → padding top/bottom
+
+---
+
+## 🧱 Common Components
+#### Cards
+```bash
+<div class="card">
+    <div class="card-body">
+        Content here
+    </div>
+</div>
+```
+
+---
+
+#### Navbar
+```bash
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    Navbar content
+</nav>
+```
+
+---
+
+#### Alerts
+```bash
+<div class="alert alert-success">
+    Success message
+</div>
+```
+
+---
+
+## 💡 Best Practices
+
+- ✔ Use Bootstrap for layout first
+- ✔ Only add custom CSS for branding
+- ✔ Keep spacing consistent (py-5, mb-4)
+- ✔ Use button colors consistently (don’t mix meanings)
+- ✔ Prefer utility classes over custom CSS
+
+## 🚀 Quick Mental Model
+
+Think like this:
+
+- btn-primary → main action
+- btn-danger → destructive action
+- btn-warning → edit/change
+- btn-success → confirm/complete
+
+## 📌 Summary
+
+Bootstrap helps you:
+
+- Build faster
+- Stay consistent
+- Avoid repetitive CSS
+
+But the key is using it **consistently and intentionally**, not randomly.

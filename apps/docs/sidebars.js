@@ -71,7 +71,8 @@ const sidebars = {
         },
         'semantic-versioning-strat',
         'git-workflow',
-        'mermaid-diagrams-guide'
+        'mermaid-diagrams-guide',
+        'bootstrap-guide'
       ],
     },
 
